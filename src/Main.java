@@ -1,3 +1,4 @@
+import backend.AmicaDecoder;
 import backend.Test;
 
 /**
@@ -5,7 +6,12 @@ import backend.Test;
  */
 public class Main {
     public static void main(String[] args){
-        Test test = new Test();
+        AmicaDecoder test = new AmicaDecoder();
+        try {
+            test.parseJSON("fi", "0190");
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
     }
 
 }

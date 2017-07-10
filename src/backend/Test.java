@@ -42,8 +42,8 @@ public class Test {
           }
 
           //System.out.println(alternatives.toString(2));
-          System.out.println(alternatives.get(0));
-
+          //System.out.println(alternatives.get(0));
+          System.out.println(testJSON.toString(2));
 
       } catch(Exception ex) {
           ex.printStackTrace();

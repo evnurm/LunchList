@@ -6,6 +6,4 @@ package backend;
  *
  * @author evnurm
  */
-public interface JSONDecoder {
-
-}
+public interface JSONDecoder{}

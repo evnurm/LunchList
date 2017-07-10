@@ -2,3 +2,4 @@
 !/src
 !/libs
 !.gitignore
+src/view/
