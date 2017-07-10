@@ -29,7 +29,20 @@ public class Test {
 
           JSONObject testJSON = new JSONObject(json);
           JSONArray array = testJSON.getJSONArray("MenusForDays");
-          System.out.println(new JSONObject(array.get(0).toString()).get("SetMenus"));
+          JSONArray alternatives = new JSONObject(array.get(0).toString()).getJSONArray("SetMenus");
+          int len = alternatives.length();
+
+          for(int idx = 0; idx < len; idx++){
+             JSONArray components = new JSONArray(new JSONObject(alternatives.get(idx).toString()).get("Components").toString());
+             for(Object x: components){
+                 System.out.println(x.toString());
+             }
+             System.out.println("--------------------------------");
+
+          }
+
+          //System.out.println(alternatives.toString(2));
+          System.out.println(alternatives.get(0));
 
 
       } catch(Exception ex) {
