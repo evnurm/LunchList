@@ -2,7 +2,6 @@ package backend;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,6 +11,7 @@ import org.json.JSONObject;
 public class AmicaDecoder implements JSONDecoder {
 
     private String fetchData(String lang, String restaurantCode) throws Exception{
+
         Date today = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
         String date = sdf.format(today);
@@ -20,34 +20,50 @@ public class AmicaDecoder implements JSONDecoder {
                 "costNumber="+restaurantCode +
                 "&language="+lang+"&firstDay=" + date;
 
+
         return DataFormatter.getJSONData(address);
     }
 
     /** Parses the json from the given source. */
-    public void parseJSON(String lang, String restaurantCode) throws Exception {
+    public Restaurant parseJSON(String lang, String restaurantCode) throws Exception {
         String json = fetchData(lang, restaurantCode);
         JSONObject fullJSON = new JSONObject(json);
 
+        String resName = fullJSON.get("RestaurantName").toString();
+
+        // Create the restaurant object/instance with the fetched name.
+        Restaurant restaurant = new Restaurant(resName);
+
+
         JSONArray menus = fullJSON.getJSONArray("MenusForDays");
-        //System.out.println(menus.toString(2));
+
 
         JSONArray[] setMenus = new JSONArray[7];
 
         for(int i = 0; i < menus.length();i++){
             JSONArray test = new JSONObject(menus.get(i).toString()).getJSONArray("SetMenus");
             setMenus[i] = test;
-            //System.out.println(test.toString(2) + "\n-----\n");
         }
 
-        JSONArray[] components = new JSONArray[7];
 
         for(Object x: setMenus){
-            JSONArray intermediate = new JSONArray(x.toString());
-            for(Object y: intermediate){
-                System.out.println(new JSONObject(y.toString()).getJSONArray("Components"));
+            if(x != null){
+              JSONArray intermediate = new JSONArray(x.toString());
+
+              LunchOption lo = new LunchOption();
+              for(Object y: intermediate){
+                JSONArray components = new JSONObject(y.toString()).getJSONArray("Components");
+
+                for(Object component: components){
+                    lo.addComponent(component.toString());
+                }
+              }
+
+              restaurant.addLunchOption(lo);
             }
         }
 
+        return restaurant;
 
 
     }
