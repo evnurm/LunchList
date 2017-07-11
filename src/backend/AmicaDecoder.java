@@ -50,16 +50,17 @@ public class AmicaDecoder implements JSONDecoder {
             if(x != null){
               JSONArray intermediate = new JSONArray(x.toString());
 
-              LunchOption lo = new LunchOption();
+
               for(Object y: intermediate){
+                LunchOption lo = new LunchOption();
                 JSONArray components = new JSONObject(y.toString()).getJSONArray("Components");
 
                 for(Object component: components){
                     lo.addComponent(component.toString());
                 }
+                restaurant.addLunchOption(lo);
               }
 
-              restaurant.addLunchOption(lo);
             }
         }
 
