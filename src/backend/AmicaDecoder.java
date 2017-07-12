@@ -1,6 +1,7 @@
 package backend;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -52,18 +53,22 @@ public class AmicaDecoder implements JSONDecoder {
             if(x != null){
                // array whose elements are the menus for one day.
               JSONArray intermediate = new JSONArray(x.toString());
-
+              ArrayList<LunchOption> options = new ArrayList<>();
               for(Object y: intermediate){
-                Day day = new Day();
+
                 LunchOption lo = new LunchOption();
                 JSONArray components = new JSONObject(y.toString()).getJSONArray("Components");
+
 
                 for(Object component: components){
                     lo.addComponent(component.toString());
                 }
-                restaurant.addDay(day);
-              }
+                options.add(lo);
 
+
+              }
+              restaurant.addDay(options.toArray(new LunchOption[0]));
+              options.clear();
             }
         }
 

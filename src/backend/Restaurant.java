@@ -14,11 +14,23 @@ public class Restaurant {
     }
 
 
-    private ArrayList<Day> days  = new ArrayList<>(); // contains the Day-instances.
+    private ArrayList<DayMenu> days  = new ArrayList<>(); // contains the Day-instances.
 
-    public void addDay(Day day){
+    /** Adds a day's menu to this restaurant. */
+    public void addDay(LunchOption[] los){
+        DayMenu day = new DayMenu();
+
+        for(LunchOption lo: los){
+            day.addLunchOption(lo);
+        }
+
         days.add(day);
     }
+
+    public DayMenu[] getDayMenus(){
+        return days.toArray(new DayMenu[0]);
+    }
+
 
     public String getName(){
         return name;
@@ -26,13 +38,8 @@ public class Restaurant {
 
 }
 
-class Day{
+class DayMenu {
 
-    private String date;
-
-    public Day(String date){
-        this.date = date;
-    }
 
     private ArrayList<LunchOption> lunchOptions = new ArrayList<>();
 
