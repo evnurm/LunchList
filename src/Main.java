@@ -11,15 +11,6 @@ public class Main {
         try {
             Restaurant alvari = test.parseJSON("fi", "0190");
 
-            System.out.println(alvari.getName() +"\n");
-            for(LunchOption lo: alvari.getLunchOptions()){
-                for(String component: lo.getComponents()){
-                    System.out.println(component);
-                }
-              System.out.println("\n -------------- \n");
-            }
-
-
 
         } catch(Exception ex){
             ex.printStackTrace();

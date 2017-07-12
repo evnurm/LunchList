@@ -12,6 +12,8 @@ public class AmicaDecoder implements JSONDecoder {
 
     private String fetchData(String lang, String restaurantCode) throws Exception{
 
+
+
         Date today = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
         String date = sdf.format(today);
@@ -48,17 +50,18 @@ public class AmicaDecoder implements JSONDecoder {
 
         for(Object x: setMenus){
             if(x != null){
+               // array whose elements are the menus for one day.
               JSONArray intermediate = new JSONArray(x.toString());
 
-
               for(Object y: intermediate){
+                Day day = new Day();
                 LunchOption lo = new LunchOption();
                 JSONArray components = new JSONObject(y.toString()).getJSONArray("Components");
 
                 for(Object component: components){
                     lo.addComponent(component.toString());
                 }
-                restaurant.addLunchOption(lo);
+                restaurant.addDay(day);
               }
 
             }
