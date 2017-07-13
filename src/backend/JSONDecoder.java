@@ -15,7 +15,7 @@ abstract class JSONDecoder{
     /** Returns the date object that represents Monday of the current week. */
     Date getMonday(){
        int today = cal.get(Calendar.DAY_OF_WEEK);
-       cal.roll(Calendar.DAY_OF_WEEK,today - 2);
+       cal.roll(Calendar.DAY_OF_WEEK, 2-today);
        return cal.getTime();
 
     }

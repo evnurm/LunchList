@@ -15,9 +15,9 @@ public class AmicaDecoder extends JSONDecoder {
 
 
 
-        Date today = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
-        String date = sdf.format(today);
+        String date = sdf.format(getMonday());
+        System.out.println(date);
 
         String address = "http://www.amica.fi/modules/json/json/Index?" +
                 "costNumber="+restaurantCode +

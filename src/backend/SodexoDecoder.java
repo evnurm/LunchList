@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -13,16 +14,38 @@ import java.util.Date;
 public class SodexoDecoder extends JSONDecoder {
 
     // Fetches the JSON data to parse.
-    private String fetchData(String lang, String restaurantCode) throws Exception {
+    private String fetchData(String lang, String restaurantCode, Date day) throws Exception {
 
-        String date = new SimpleDateFormat("YYYY/MM/dd").format(new Date());
+        String date = new SimpleDateFormat("YYYY/MM/dd").format(day);
         return DataFormatter.getJSONData("http://www.sodexo.fi/ruokalistat/" +
                 "output/daily_json/"+restaurantCode+"/"+ date +"/"+lang);
     }
 
+    private Date[] days = new Date[7];
+
+    // constructor that initializes the array 'days'.
+    public SodexoDecoder(){
+        days[0] = getMonday();
+
+        for(int i = 1; i < 7; i++){
+            cal.roll(Calendar.DAY_OF_WEEK, 1);
+            days[i] = cal.getTime();
+        }
+    }
+
+
+
     /** Parses the JSON from the given source and returns a corresponding restaurant object.*/
     public Restaurant parseJSON(String lang, String restaurantCode) throws Exception {
-        String json = fetchData(lang, restaurantCode);
+
+        String[] jsons = new String[7];
+
+        for(int i = 0; i < 7; i++){
+            jsons[i] = fetchData(lang, restaurantCode, days[i]);
+        }
+
+        String json = jsons[0];
+
         JSONObject fullJSON = new JSONObject(json);
 
         JSONObject meta = fullJSON.getJSONObject("meta");
@@ -30,7 +53,20 @@ public class SodexoDecoder extends JSONDecoder {
 
         Restaurant restaurant = new Restaurant(name);
 
+
         JSONArray courses = fullJSON.getJSONArray("courses");
+        restaurant.addDay(getDayMenu(courses));
+
+        for(int i = 1; i < 7; i++){
+           courses =  new JSONObject(jsons[i]).getJSONArray("courses");
+           restaurant.addDay(getDayMenu(courses));
+        }
+
+        return restaurant;
+    }
+
+    // gets the lunch options for one day.
+    private LunchOption[] getDayMenu(JSONArray courses){
 
         ArrayList<LunchOption> options = new ArrayList<>();
 
@@ -42,8 +78,6 @@ public class SodexoDecoder extends JSONDecoder {
             options.add(lo);
         }
 
-        restaurant.addDay(options.toArray(new LunchOption[0]));
-
-        return restaurant;
+        return options.toArray(new LunchOption[0]);
     }
 }

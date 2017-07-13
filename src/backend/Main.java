@@ -4,7 +4,7 @@ package backend;
  */
 public class Main {
     public static void main(String[] args){
-        /*AmicaDecoder test = new AmicaDecoder();
+       /* AmicaDecoder test = new AmicaDecoder();
         try {
             Restaurant alvari = test.parseJSON("fi", "0190");
             System.out.println(alvari.getName());
@@ -19,8 +19,8 @@ public class Main {
                    System.out.println("\n----------------------\n");
                 }
                 System.out.println("NEW DAY");
-            }*/
-
+            }
+              */
         try{
            new Test();
            SodexoDecoder test = new SodexoDecoder();
