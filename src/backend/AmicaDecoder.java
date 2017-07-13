@@ -9,7 +9,7 @@ import org.json.JSONObject;
 /**
  * Decodes the JSON data received from Amica.
  */
-public class AmicaDecoder implements JSONDecoder {
+public class AmicaDecoder extends JSONDecoder {
 
     private String fetchData(String lang, String restaurantCode) throws Exception{
 

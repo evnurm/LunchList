@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * Decodes the JSON data received from Sodexo.
  */
-public class SodexoDecoder implements JSONDecoder {
+public class SodexoDecoder extends JSONDecoder {
 
     // Fetches the JSON data to parse.
     private String fetchData(String lang, String restaurantCode) throws Exception {
