@@ -24,7 +24,17 @@ public class Main {
         try{
 
            SodexoDecoder test = new SodexoDecoder();
-           test.parseJSON("fi","142");
+           Restaurant cs = test.parseJSON("fi","142");
+
+           for(DayMenu dm: cs.getDayMenus()){
+               for(LunchOption lo: dm.getLunchOptions()){
+                   for(String component: lo.getComponents()){
+                       System.out.println(component);
+                   }
+                   System.out.println("\n----------------------\n");
+               }
+               System.out.println("NEW DAY");
+           }
         } catch(Exception ex){
             ex.printStackTrace();
         }

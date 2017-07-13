@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
 public class SodexoDecoder implements JSONDecoder {
 
     // Fetches the JSON data to parse.
-    private String fetchData(String lang, String restaurantCode) throws Exception{
+    private String fetchData(String lang, String restaurantCode) throws Exception {
 
         String date = new SimpleDateFormat("YYYY/MM/dd").format(new Date());
         return DataFormatter.getJSONData("http://www.sodexo.fi/ruokalistat/" +
@@ -31,9 +32,17 @@ public class SodexoDecoder implements JSONDecoder {
 
         JSONArray courses = fullJSON.getJSONArray("courses");
 
+        ArrayList<LunchOption> options = new ArrayList<>();
 
+        for(Object course: courses){
+            LunchOption lo = new LunchOption();
 
-        System.out.println(fullJSON.toString(2));
+            JSONObject option = new JSONObject(course.toString());
+            lo.addComponent(option.get("title_fi").toString());
+            options.add(lo);
+        }
+
+        restaurant.addDay(options.toArray(new LunchOption[0]));
 
         return restaurant;
     }
