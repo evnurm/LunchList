@@ -23,6 +23,7 @@ public class Main {
               */
         try{
            new Test();
+
            SodexoDecoder test = new SodexoDecoder();
            Restaurant cs = test.parseJSON("fi","142");
 

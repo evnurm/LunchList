@@ -37,18 +37,3 @@ public class Restaurant {
     }
 
 }
-
-class DayMenu {
-
-
-    private ArrayList<LunchOption> lunchOptions = new ArrayList<>();
-
-    public void addLunchOption(LunchOption lo){
-        lunchOptions.add(lo);
-    }
-
-    public LunchOption[] getLunchOptions(){
-        return lunchOptions.toArray(new LunchOption[0]);
-    }
-
-}
