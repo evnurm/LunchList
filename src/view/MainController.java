@@ -5,9 +5,13 @@ import backend.DayMenu;
 import backend.LunchOption;
 import backend.Restaurant;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 
 
 import java.net.URL;
@@ -18,7 +22,8 @@ import java.util.ResourceBundle;
  */
 public class MainController implements Initializable {
 
-    @FXML public ListView list;
+
+    @FXML public VBox mainContainer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -27,13 +32,16 @@ public class MainController implements Initializable {
         try {
             Restaurant res = ad.parseJSON("fi", "0190");
 
-            for(DayMenu dm: res.getDayMenus()){
+            mainContainer.getChildren().add(new RestaurantView(res));
+
+            /*for(DayMenu dm: res.getDayMenus()){
                 for(LunchOption lo: dm.getLunchOptions()){
                     for(String component: lo.getComponents()){
                         list.getItems().add(new Label(component));
                     }
                 }
             }
+            */
 
         } catch(Exception e){}
 

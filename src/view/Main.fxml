@@ -14,10 +14,6 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="596.0" prefWidth="928.0">
-         <content>
-            <ListView fx:id="list" prefHeight="595.0" prefWidth="907.0" />
-         </content>
-      </ScrollPane>
+      <VBox prefHeight="596.0" prefWidth="928.0" fx:id="mainContainer"/>
    </children>
 </VBox>

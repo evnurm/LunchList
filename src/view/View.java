@@ -1,13 +1,17 @@
-package view;/**
- * Created by Valtteri on 15.7.2017.
- */
+package view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+
+/**
+ * Main window of the program.
+ *
+ * @author evnurm
+ */
 
 public class View extends Application {
 
