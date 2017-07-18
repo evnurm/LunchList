@@ -43,7 +43,7 @@ public class MainController implements Initializable {
             }
             */
 
-        } catch(Exception e){}
+        } catch(Exception e){e.printStackTrace();}
 
     }
 }

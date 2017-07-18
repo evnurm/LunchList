@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 
 /**
- * Created by evnva on 17.7.2017.
+ * Created by evnurm on 17.7.2017.
  */
 public class RestaurantView extends VBox {
 
@@ -21,7 +21,8 @@ public class RestaurantView extends VBox {
     public RestaurantView(Restaurant restaurant){
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RestaurantView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("RestaurantView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

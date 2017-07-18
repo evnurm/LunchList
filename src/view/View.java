@@ -30,6 +30,6 @@ public class View extends Application {
             primaryStage.show();
 
 
-        } catch(Exception e){}
+        } catch(Exception e){ e.printStackTrace();}
     }
 }
