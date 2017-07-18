@@ -38,9 +38,8 @@ public class RestaurantView extends VBox {
 
         DayMenu monday = res.getDayMenus()[0];
         for(LunchOption lo: monday.getLunchOptions()){
-           for(String component: lo.getComponents()){
-               optionsContainer.getChildren().add(new Label(component));
-           }
+            LunchOptionContainer loc = new LunchOptionContainer(lo);
+            optionsContainer.getChildren().add(loc);
         }
 
     }
