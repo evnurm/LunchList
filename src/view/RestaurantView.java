@@ -36,11 +36,16 @@ public class RestaurantView extends VBox {
 
         resName.setText(res.getName());
 
-        DayMenu monday = res.getDayMenus()[0];
-        for(LunchOption lo: monday.getLunchOptions()){
-            LunchOptionContainer loc = new LunchOptionContainer(lo);
-            optionsContainer.getChildren().add(loc);
-        }
+        DayMenu[] menus = res.getDayMenus();
 
+        if(menus.length != 0){
+            DayMenu monday = menus[0];
+            for (LunchOption lo : monday.getLunchOptions()) {
+                LunchOptionContainer loc = new LunchOptionContainer(lo);
+                optionsContainer.getChildren().add(loc);
+            }
+        } else {
+            optionsContainer.getChildren().add(new Label("Ruokalistaa ei kyetty noutamaan."));
+        }
     }
 }

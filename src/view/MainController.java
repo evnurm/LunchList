@@ -22,14 +22,24 @@ public class MainController implements Initializable {
 
     @FXML public VBox mainContainer;
 
+    // array holding the codes for Amica restaurants.
+    private String[] amica = {"0190", "0199", "3579"};
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         AmicaDecoder ad = new AmicaDecoder();
 
         try {
-            Restaurant alvari = ad.parseJSON("fi", "0190");
+
+            for(String code: amica){
+                Restaurant res = ad.parseJSON("fi",code);
+                mainContainer.getChildren().add(new RestaurantView(res));
+            }
+
             Restaurant cs = new SodexoDecoder().parseJSON("fi","142");
-            mainContainer.getChildren().addAll(new RestaurantView(alvari), new RestaurantView(cs));
+            mainContainer.getChildren().addAll(new RestaurantView(cs));
 
         } catch(Exception e){e.printStackTrace();}
 
