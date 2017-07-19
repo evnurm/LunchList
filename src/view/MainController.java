@@ -1,9 +1,6 @@
 package view;
 
-import backend.AmicaDecoder;
-import backend.DayMenu;
-import backend.LunchOption;
-import backend.Restaurant;
+import backend.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,8 +17,8 @@ import java.util.ResourceBundle;
 /**
  * Created by Valtteri on 16.7.2017.
  */
-public class MainController implements Initializable {
 
+public class MainController implements Initializable {
 
     @FXML public VBox mainContainer;
 
@@ -30,18 +27,9 @@ public class MainController implements Initializable {
         AmicaDecoder ad = new AmicaDecoder();
 
         try {
-            Restaurant res = ad.parseJSON("fi", "0190");
-
-            mainContainer.getChildren().add(new RestaurantView(res));
-
-            /*for(DayMenu dm: res.getDayMenus()){
-                for(LunchOption lo: dm.getLunchOptions()){
-                    for(String component: lo.getComponents()){
-                        list.getItems().add(new Label(component));
-                    }
-                }
-            }
-            */
+            Restaurant alvari = ad.parseJSON("fi", "0190");
+            Restaurant cs = new SodexoDecoder().parseJSON("fi","142");
+            mainContainer.getChildren().addAll(new RestaurantView(alvari), new RestaurantView(cs));
 
         } catch(Exception e){e.printStackTrace();}
 
