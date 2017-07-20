@@ -18,7 +18,7 @@ public class RestaurantView extends VBox {
     @FXML public Label resName;
     @FXML public VBox optionsContainer;
 
-    public RestaurantView(Restaurant restaurant){
+    public RestaurantView(Restaurant restaurant, int dayIdx){
 
 
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -39,11 +39,13 @@ public class RestaurantView extends VBox {
         DayMenu[] menus = res.getDayMenus();
 
         if(menus.length != 0){
-            DayMenu monday = menus[0];
-            for (LunchOption lo : monday.getLunchOptions()) {
+
+            DayMenu dayMenu = menus[dayIdx];
+            for (LunchOption lo : dayMenu.getLunchOptions()) {
                 LunchOptionContainer loc = new LunchOptionContainer(lo);
                 optionsContainer.getChildren().add(loc);
             }
+
         } else {
             optionsContainer.getChildren().add(new Label("Ruokalistaa ei kyetty noutamaan."));
         }

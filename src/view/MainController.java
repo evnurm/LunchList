@@ -35,11 +35,11 @@ public class MainController implements Initializable {
 
             for(String code: amica){
                 Restaurant res = ad.parseJSON("fi",code);
-                mainContainer.getChildren().add(new RestaurantView(res));
+                mainContainer.getChildren().add(new RestaurantView(res,3));
             }
 
             Restaurant cs = new SodexoDecoder().parseJSON("fi","142");
-            mainContainer.getChildren().addAll(new RestaurantView(cs));
+            mainContainer.getChildren().addAll(new RestaurantView(cs,3));
 
         } catch(Exception e){e.printStackTrace();}
 

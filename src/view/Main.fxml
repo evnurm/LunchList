@@ -10,7 +10,7 @@
       <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: linear-gradient(#444,#333);" text="Lunch List" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
          <font>
             <Font name="System Bold" size="20.0" />
-         </font>s
+         </font>
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -20,7 +20,7 @@
       </Label>
       <HBox alignment="CENTER" prefHeight="45.0" style="-fx-background-color: linear-gradient(#333,#222);">
          <children>
-            <Label alignment="CENTER" text="Monday" textFill="WHITE">
+            <Label fx:id="mon" alignment="CENTER" text="Monday" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -28,7 +28,7 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Label>
-            <Label text="Tuesday" textFill="WHITE">
+            <Label fx:id="tue" text="Tuesday" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -36,7 +36,7 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Label>
-            <Label text="Wednesday" textFill="WHITE">
+            <Label fx:id="wed" text="Wednesday" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -44,7 +44,7 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Label>
-            <Label text="Thursday" textFill="WHITE">
+            <Label fx:id="thu" text="Thursday" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -52,7 +52,7 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Label>
-            <Label text="Friday" textFill="WHITE">
+            <Label fx:id="fri" text="Friday" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -60,7 +60,7 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Label>
-            <Label text="Saturday" textFill="WHITE">
+            <Label fx:id="sat" text="Saturday" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -68,7 +68,7 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Label>
-            <Label text="Sunday" textFill="WHITE">
+            <Label fx:id="sun" text="Sunday" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
