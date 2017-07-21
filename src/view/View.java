@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 /**
  * Main window of the program.
  *
@@ -28,7 +27,6 @@ public class View extends Application {
 
             primaryStage.setScene(scene);
             primaryStage.show();
-
 
         } catch(Exception e){ e.printStackTrace();}
     }

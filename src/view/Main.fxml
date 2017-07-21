@@ -19,64 +19,6 @@
          </padding>
       </Label>
       <HBox alignment="CENTER" prefHeight="45.0" style="-fx-background-color: linear-gradient(#333,#222);" fx:id="navbar">
-         <children>
-            <Label fx:id="mon" alignment="CENTER" text="Monday" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="tue" text="Tuesday" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="wed" text="Wednesday" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="thu" text="Thursday" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="fri" text="Friday" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="sat" text="Saturday" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="sun" text="Sunday" textFill="WHITE">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Label>
-         </children>
       </HBox>
       <VBox fx:id="mainContainer" prefHeight="596.0" prefWidth="928.0" />
    </children>

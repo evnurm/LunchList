@@ -1,20 +1,24 @@
 package view;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-
+import javafx.scene.layout.VBox;
 import java.io.IOException;
 
+
 /** Controller class for DayButton. */
-public class DayButton extends Label {
+public class DayButton extends VBox {
 
     private String title;
     private int idx;
 
+    @FXML private Label dayName;
+
     public DayButton(String title, int index){
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("lunchOptionContainer.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("DayButton.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -25,11 +29,12 @@ public class DayButton extends Label {
         }
 
         idx = index;
-        this.title = title;
+        dayName.setText(title);
+  //      this.title = title;
     }
     /** onClick handler for the DayButton. */
     public void click(){
-        MainController.setDayIndex(idx);
+
     }
 
 

@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 
-<fx:root onMouseClicked="#click" style="-fx-background-color: transparent;" text="Label" textFill="WHITE" type="Label" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <padding>
-      <Insets left="10.0" right="10.0" />
-   </padding>
+
+<fx:root type="VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="dayName" onMouseClicked="#click" style="-fx-background-color: transparent;" text="Label" textFill="WHITE">
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
 </fx:root>
