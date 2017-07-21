@@ -29,7 +29,7 @@ public class DayButton extends Label {
     }
     /** onClick handler for the DayButton. */
     public void click(){
-        System.out.println("Clicked");
+        MainController.setDayIndex(idx);
     }
 
 

@@ -18,7 +18,7 @@
             <Insets bottom="10.0" top="10.0" />
          </padding>
       </Label>
-      <HBox alignment="CENTER" prefHeight="45.0" style="-fx-background-color: linear-gradient(#333,#222);">
+      <HBox alignment="CENTER" prefHeight="45.0" style="-fx-background-color: linear-gradient(#333,#222);" fx:id="navbar">
          <children>
             <Label fx:id="mon" alignment="CENTER" text="Monday" textFill="WHITE">
                <font>

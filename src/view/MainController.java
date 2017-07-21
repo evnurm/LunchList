@@ -2,12 +2,8 @@ package view;
 
 import backend.*;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 
@@ -20,12 +16,14 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+
+    @FXML private HBox navbar;
     @FXML public VBox mainContainer;
 
     // array holding the codes for Amica restaurants.
     private String[] amica = {"0190", "0199", "3579"};
 
-
+    private static int dayIndex = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -35,7 +33,7 @@ public class MainController implements Initializable {
 
             for(String code: amica){
                 Restaurant res = ad.parseJSON("fi",code);
-                mainContainer.getChildren().add(new RestaurantView(res,3));
+                mainContainer.getChildren().add(new RestaurantView(res,dayIndex));
             }
 
             Restaurant cs = new SodexoDecoder().parseJSON("fi","142");
@@ -43,5 +41,15 @@ public class MainController implements Initializable {
 
         } catch(Exception e){e.printStackTrace();}
 
+    }
+
+    /** Sets the index of the day whose menus will be displayed.*/
+    public static Boolean setDayIndex(int idx){
+        if(idx >= 0 && idx <= 6){
+            dayIndex = idx;
+            return true;
+        } else {
+            return false;
+        }
     }
 }
