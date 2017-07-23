@@ -34,7 +34,9 @@ public class DayButton extends VBox {
     }
     /** onClick handler for the DayButton. */
     public void click(){
-
+       VBox mc = (VBox) getParent().getParent().lookup("#mainContainer");
+        mc.getChildren().clear();
+        mc.getChildren().add(new MenusContainer(idx));
     }
 
 
