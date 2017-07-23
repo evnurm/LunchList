@@ -13,7 +13,6 @@ public class MenusContainer extends VBox{
 
     @FXML private VBox container;
 
-
     public MenusContainer(int day){
 
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -27,20 +26,11 @@ public class MenusContainer extends VBox{
             throw new RuntimeException(exception);
         }
 
+        Restaurant[] restaurants = MainController.restaurants;
 
-        String[] amica = {"0190", "0199", "3579"};
-        AmicaDecoder ad = new AmicaDecoder();
+        for(Restaurant res: restaurants){
+            container.getChildren().add(new RestaurantView(res,day));
+        }
 
-        try {
-
-            for(String code: amica){
-                Restaurant res = ad.parseJSON("fi",code);
-                container.getChildren().add(new RestaurantView(res,day));
-            }
-
-            Restaurant cs = new SodexoDecoder().parseJSON("fi","142");
-            container.getChildren().addAll(new RestaurantView(cs, day));
-
-        } catch(Exception e){e.printStackTrace();}
     }
 }

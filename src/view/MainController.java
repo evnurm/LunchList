@@ -1,5 +1,7 @@
 package view;
 
+import backend.Restaurant;
+import backend.Restaurants;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
@@ -14,6 +16,8 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
 
+    public static Restaurant[] restaurants = Restaurants.getRestaurants();
+
     @FXML private HBox navbar;
     @FXML private VBox mainContainer;
 
@@ -21,15 +25,18 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
         String[] weekdays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
         for(int i = 0; i < 7; i++){
             navbar.getChildren().add(new DayButton(weekdays[i], i));
         }
 
-     mainContainer.getChildren().add(new MenusContainer(0));
+        displayMenus(0);
+    }
 
+    public void displayMenus(int day){
+        mainContainer.getChildren().clear();
+        mainContainer.getChildren().add(new MenusContainer(day));
     }
 
 }
