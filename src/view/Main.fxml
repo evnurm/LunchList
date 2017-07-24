@@ -18,8 +18,8 @@
             <Insets bottom="10.0" top="10.0" />
          </padding>
       </Label>
-      <HBox alignment="CENTER" prefHeight="45.0" style="-fx-background-color: linear-gradient(#333,#222);" fx:id="navbar">
+      <HBox fx:id="navbar" alignment="CENTER" prefHeight="45.0" style="-fx-background-color: linear-gradient(#333,#222);">
       </HBox>
-      <VBox fx:id="mainContainer" prefHeight="596.0" prefWidth="928.0" />
+      <GridPane fx:id="mainContainer" alignment="CENTER" gridLinesVisible="true" prefHeight="596.0" prefWidth="928.0" />
    </children>
 </VBox>
