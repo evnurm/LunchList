@@ -41,7 +41,7 @@ public class MainController extends VBox implements Initializable {
         mainContainer.getChildren().clear();
 
         for(int i = 0; i < restaurants.length; i++){
-            RestaurantView rw = new RestaurantView(restaurants[i], i);
+            RestaurantView rw = new RestaurantView(restaurants[i], day);
 
             int l = restaurants.length;
 

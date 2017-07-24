@@ -20,6 +20,6 @@
       </Label>
       <HBox fx:id="navbar" alignment="CENTER" prefHeight="45.0" style="-fx-background-color: linear-gradient(#333,#222);">
       </HBox>
-      <GridPane fx:id="mainContainer" alignment="CENTER" gridLinesVisible="true" prefHeight="596.0" prefWidth="928.0" />
+      <GridPane fx:id="mainContainer" alignment="TOP_CENTER" gridLinesVisible="true" prefHeight="596.0" prefWidth="928.0" />
    </children>
 </VBox>

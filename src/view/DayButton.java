@@ -1,8 +1,10 @@
 package view;
 
+import backend.Restaurant;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 
@@ -34,8 +36,21 @@ public class DayButton extends VBox {
     }
     /** onClick handler for the DayButton. */
     public void click(){
-       MainController mc = (MainController) getParent().getParent();
-       mc.displayMenus(idx);
+        GridPane grid = (GridPane) getParent().getParent().lookup("#mainContainer");
+        Restaurant[] restaurants = MainController.restaurants;
+
+        grid.getChildren().clear();
+
+
+        for(int i = 0; i < MainController.restaurants.length; i++){
+            RestaurantView rw = new RestaurantView(restaurants[i], idx);
+
+            int l = restaurants.length;
+
+            grid.setConstraints(rw,i%(l-1),i/(l-1));
+            grid.getChildren().add(rw);
+        }
+
 
     }
 
