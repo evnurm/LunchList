@@ -36,7 +36,10 @@ public class MainController implements Initializable {
 
     public void displayMenus(int day){
         mainContainer.getChildren().clear();
-        mainContainer.getChildren().add(new MenusContainer(day));
+
+        for(Restaurant res: restaurants){
+            mainContainer.getChildren().add(new RestaurantView(res,day));
+        }
     }
 
 }
