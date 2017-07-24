@@ -27,7 +27,7 @@ public class MainController extends VBox implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        String[] weekdays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        String[] weekdays = {"Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai", "Lauantai", "Sunnuntai"};
 
         for(int i = 0; i < 7; i++){
             navbar.getChildren().add(new DayButton(weekdays[i], i));
