@@ -39,7 +39,6 @@ public class MainController extends VBox implements Initializable {
             dayIndex = 6;
         }
 
-        System.out.println(dayIndex);
         displayMenus(dayIndex);
     }
 

@@ -41,9 +41,13 @@ public class RestaurantView extends VBox {
         if(menus.length != 0){
 
             DayMenu dayMenu = menus[dayIdx];
-            for (LunchOption lo : dayMenu.getLunchOptions()) {
-                LunchOptionContainer loc = new LunchOptionContainer(lo);
-                optionsContainer.getChildren().add(loc);
+            if(dayMenu.getLunchOptions().length != 0){
+                for (LunchOption lo : dayMenu.getLunchOptions()) {
+                    LunchOptionContainer loc = new LunchOptionContainer(lo);
+                    optionsContainer.getChildren().add(loc);
+                }
+            } else {
+                optionsContainer.getChildren().add(new Label("Ravintola on suljettu."));
             }
 
         } else {
