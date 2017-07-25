@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
+import java.util.Calendar;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class MainController extends VBox implements Initializable {
 
+    private Calendar cal = Calendar.getInstance();
 
     public static Restaurant[] restaurants = Restaurants.getRestaurants();
 
@@ -33,7 +34,13 @@ public class MainController extends VBox implements Initializable {
             navbar.getChildren().add(new DayButton(weekdays[i], i));
         }
 
-        displayMenus(0);
+        int dayIndex = cal.get(Calendar.DAY_OF_WEEK) - 2;
+        if(dayIndex < 0){
+            dayIndex = 6;
+        }
+
+        System.out.println(dayIndex);
+        displayMenus(dayIndex);
     }
 
     /** Loads the menus for the given day into the UI.*/
