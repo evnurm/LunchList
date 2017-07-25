@@ -24,6 +24,8 @@ public class MainController extends VBox implements Initializable {
     @FXML private HBox navbar;
     @FXML private GridPane mainContainer;
 
+    public static DayButton active;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -31,7 +33,9 @@ public class MainController extends VBox implements Initializable {
         String[] weekdays = {"Maanantai", "Tiistai", "Keskiviikko", "Torstai", "Perjantai", "Lauantai", "Sunnuntai"};
 
         for(int i = 0; i < 7; i++){
-            navbar.getChildren().add(new DayButton(weekdays[i], i));
+            DayButton db = new DayButton(weekdays[i],i);
+            db.setId("db"+i);
+            navbar.getChildren().add(db);
         }
 
         int dayIndex = cal.get(Calendar.DAY_OF_WEEK) - 2;
@@ -39,7 +43,11 @@ public class MainController extends VBox implements Initializable {
             dayIndex = 6;
         }
 
+        active = (DayButton) navbar.lookup("#db"+dayIndex);
         displayMenus(dayIndex);
+
+
+
     }
 
     /** Loads the menus for the given day into the UI.*/

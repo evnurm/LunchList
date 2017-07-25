@@ -49,6 +49,10 @@ public class DayButton extends VBox {
 
             grid.setConstraints(rw,i%(l-1),i/(l-1));
             grid.getChildren().add(rw);
+
+            MainController.active.dayName.setStyle("-fx-font-weight:normal;");
+            dayName.setStyle("-fx-font-weight:bold;");
+            MainController.active = this;
         }
 
 
