@@ -44,6 +44,7 @@ public class MainController extends VBox implements Initializable {
         }
 
         active = (DayButton) navbar.lookup("#db"+dayIndex);
+        active.lookup("#dayName").setStyle("-fx-font-weight:bold;");
         displayMenus(dayIndex);
 
 
