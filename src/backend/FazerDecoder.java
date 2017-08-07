@@ -7,21 +7,25 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Decodes the JSON data received from Amica.
+ * Decodes the JSON data received from Fazer Food Co. and Amica.
  */
-public class AmicaDecoder extends JSONDecoder {
+public class FazerDecoder extends JSONDecoder {
+
+    private String src;
+
+    public FazerDecoder(String source) {
+        src = source;
+    }
+
 
     private String fetchData(String lang, String restaurantCode) throws Exception{
-
-
 
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
         String date = sdf.format(getMonday());
 
-        String address = "http://www.amica.fi/modules/json/json/Index?" +
+        String address = "http://www." + src + ".fi/modules/json/json/Index?" +
                 "costNumber="+restaurantCode +
                 "&language="+lang+"&firstDay=" + date;
-
 
         return DataFormatter.getJSONData(address);
     }
@@ -50,24 +54,24 @@ public class AmicaDecoder extends JSONDecoder {
 
         for(Object x: setMenus){
             if(x != null){
-               // array whose elements are the menus for one day.
-              JSONArray intermediate = new JSONArray(x.toString());
-              ArrayList<LunchOption> options = new ArrayList<>();
-              for(Object y: intermediate){
+                // array whose elements are the menus for one day.
+                JSONArray intermediate = new JSONArray(x.toString());
+                ArrayList<LunchOption> options = new ArrayList<>();
+                for (Object y : intermediate) {
 
-                LunchOption lo = new LunchOption();
-                JSONArray components = new JSONObject(y.toString()).getJSONArray("Components");
+                    LunchOption lo = new LunchOption();
+                    JSONArray components = new JSONObject(y.toString()).getJSONArray("Components");
 
 
-                for(Object component: components){
-                    lo.addComponent(component.toString());
+                    for (Object component : components) {
+                        lo.addComponent(component.toString());
+                    }
+                    options.add(lo);
+
+
                 }
-                options.add(lo);
-
-
-              }
-              restaurant.addDay(options.toArray(new LunchOption[0]));
-              options.clear();
+                restaurant.addDay(options.toArray(new LunchOption[0]));
+                options.clear();
             }
         }
 

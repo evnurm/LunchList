@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -20,6 +21,13 @@
       </Label>
       <HBox fx:id="navbar" alignment="CENTER" prefHeight="45.0" style="-fx-background-color: linear-gradient(#333,#222);">
       </HBox>
-      <GridPane fx:id="mainContainer" alignment="TOP_CENTER" gridLinesVisible="true" prefHeight="596.0" prefWidth="928.0" />
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308"
+                  maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity"
+                  prefViewportHeight="596.7070922851562" prefViewportWidth="928.0" VBox.vgrow="ALWAYS">
+         <content>
+            <GridPane fx:id="mainContainer" alignment="TOP_CENTER" gridLinesVisible="true" prefHeight="596.0"
+                      prefWidth="928.0"/>
+         </content>
+      </ScrollPane>
    </children>
 </VBox>

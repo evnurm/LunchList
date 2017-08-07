@@ -10,14 +10,21 @@ public class Restaurants {
         ArrayList<Restaurant> res = new ArrayList<>();
 
         String[] amica = {"0190","0199","3579"};
+        String[] fazer = {"3101"};
         String[] sodexo = {"142", "26521", "13918"};
 
-        AmicaDecoder ad = new AmicaDecoder();
+        FazerDecoder ad = new FazerDecoder("amica");
+        FazerDecoder fd = new FazerDecoder("fazerfoodco");
         SodexoDecoder sd = new SodexoDecoder();
 
         try {
             for (String resCode : amica) {
                 Restaurant restaurant = ad.parseJSON("fi", resCode);
+                res.add(restaurant);
+            }
+
+            for (String resCode : fazer) {
+                Restaurant restaurant = fd.parseJSON("fi", resCode);
                 res.add(restaurant);
             }
 
