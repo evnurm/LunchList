@@ -10,7 +10,7 @@ public class Restaurants {
         ArrayList<Restaurant> res = new ArrayList<>();
 
         String[] amica = {"0190","0199","3579"};
-        String[] sodexo = {"142"};
+        String[] sodexo = {"142", "26521", "13918"};
 
         AmicaDecoder ad = new AmicaDecoder();
         SodexoDecoder sd = new SodexoDecoder();
