@@ -47,7 +47,7 @@ public class DayButton extends VBox {
 
             int l = restaurants.length;
 
-            grid.setConstraints(rw,i%(l-1),i/(l-1));
+            grid.setConstraints(rw, i % 3, i / 3);
             grid.getChildren().add(rw);
 
             MainController.active.dayName.setStyle("-fx-font-weight:normal;");
