@@ -17,7 +17,7 @@ public class SodexoDecoder extends JSONDecoder {
     private String fetchData(String lang, String restaurantCode, Date day) throws Exception {
 
         String date = new SimpleDateFormat("YYYY/MM/dd").format(day);
-        return DataFormatter.getJSONData("http://www.sodexo.fi/ruokalistat/" +
+        return DataFormatter.getJSONData("https://www.sodexo.fi/ruokalistat/" +
                 "output/daily_json/"+restaurantCode+"/"+ date +"/"+lang);
     }
 

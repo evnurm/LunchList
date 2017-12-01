@@ -9,6 +9,7 @@ public class DataFormatter {
 
     /** Returns the data received from the given resource. */
     public static String getJSONData(String addr) throws Exception {
+
         URL url = new URL(addr);
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 
