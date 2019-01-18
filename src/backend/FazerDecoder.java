@@ -7,25 +7,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Decodes the JSON data received from Fazer Food Co. and Amica.
+ * Decodes the JSON data received from Fazer Food Co.
  */
 public class FazerDecoder extends JSONDecoder {
-
-    private String src;
-
-    public FazerDecoder(String source) {
-        src = source;
-    }
-
 
     private String fetchData(String lang, String restaurantCode) throws Exception{
 
         SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
         String date = sdf.format(getMonday());
 
-        String address = "http://www." + src + ".fi/modules/json/json/Index?" +
+        String address = "https://www.fazerfoodco.fi/modules/json/json/Index?" +
                 "costNumber="+restaurantCode +
-                "&language="+lang+"&firstDay=" + date;
+                "&language="+lang+"&firstday="+date;
 
         return DataFormatter.getJSONData(address);
     }
@@ -34,7 +27,6 @@ public class FazerDecoder extends JSONDecoder {
     public Restaurant parseJSON(String lang, String restaurantCode) throws Exception {
         String json = fetchData(lang, restaurantCode);
         JSONObject fullJSON = new JSONObject(json);
-
         String resName = fullJSON.get("RestaurantName").toString();
 
         // Create the restaurant object/instance with the fetched name.
